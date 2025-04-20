@@ -14,9 +14,11 @@
 
   /* Brand Colors */
   --color-primary: #5a7d49;
+  --color-primary-rbg: 90, 125, 73;
   --color-secondary: #e4efe7;
   --color-primary-background: #faf1e6;
   --color-secondary-background: #fdfaf6;
+  --color-secondary-bg-rgb: 253, 250, 246;
 
   /* Neutral */
   --color-white: #ffffff;
