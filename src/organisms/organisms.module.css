@@ -19,3 +19,18 @@
   max-height: 35px;
   cursor: pointer;
 }
+
+.loginBtn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+  margin-left: auto;
+  padding: 2px 8px;
+  background-color: var(--color-primary);
+  border-radius: 4px;
+  color: var(--color-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

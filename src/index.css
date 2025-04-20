@@ -4,18 +4,42 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #5a7d49;
+  background-color: #faf1e6;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Brand Colors */
+  --color-primary: #5a7d49;
+  --color-secondary: #e4efe7;
+  --color-primary-background: #faf1e6;
+  --color-secondary-background: #fdfaf6;
+
+  /* Neutral */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-300: #d1d5db;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-900: #111827;
+
+  /* Alerts */
+  --color-success: #2f7d46;
+  --color-warning: #bb6c00;
+  --color-error: #9f2f2f;
+
+  /* Text */
+  --text-base: #2e2e2e;
+  --text-muted: #666666;
+  --text-inverted: #ffffff;
 }
 
 button,
-fieldset,
-input,
 p {
   all: unset;
 }
@@ -37,6 +61,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  font-family: "Poppins", sans-serif;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -44,4 +69,10 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
