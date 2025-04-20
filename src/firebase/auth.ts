@@ -5,6 +5,7 @@ import {
   signOut,
   onAuthStateChanged,
   User,
+  updateProfile,
 } from "firebase/auth";
 import app from "./config";
 
@@ -20,5 +21,19 @@ export const logout = () => signOut(auth);
 
 export const listenToAuthChanges = (callback: (user: User | null) => void) =>
   onAuthStateChanged(auth, callback);
+
+export const updateUserProfileDisplayName = (displayName: string) => {
+  if (auth.currentUser) {
+    updateProfile(auth.currentUser, {
+      displayName,
+    })
+      .then(() => {
+        console.log("done!");
+      })
+      .catch((error: Error) => {
+        console.error("error", error);
+      });
+  }
+};
 
 export default auth;

@@ -4,12 +4,14 @@ import {
   login as firebaseLogin,
   logout as firebaseLogout,
   listenToAuthChanges,
+  updateUserProfileDisplayName,
 } from "../firebase/auth";
 
 type AuthContextType = {
   user: User | null;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  updateDisplayName: (displayName: string) => Promise<void>;
   isLoggedIn: boolean;
 };
 
@@ -36,6 +38,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const logout = async () => {
     await firebaseLogout();
   };
+  const updateDisplayName = async (displayName: string) => {
+    await updateUserProfileDisplayName(displayName);
+  };
 
   const isLoggedIn = !!user;
 
@@ -44,6 +49,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     login,
     logout,
     isLoggedIn,
+    updateDisplayName,
   };
 
   return (

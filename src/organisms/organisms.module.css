@@ -1,0 +1,21 @@
+.navigationContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.userPanelContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.logoutBtn {
+  background-color: transparent;
+  border: transparent solid 1px;
+  margin-left: 8px;
+  max-height: 35px;
+  cursor: pointer;
+}
