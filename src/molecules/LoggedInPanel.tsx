@@ -1,4 +1,4 @@
-import { ExitIcon } from "@radix-ui/react-icons";
+import { ExitIcon, GearIcon } from "@radix-ui/react-icons";
 
 import { useAuth } from "src/context/AuthContext";
 import moleculesStyles from "src/molecules/molecules.module.css";
@@ -9,12 +9,13 @@ const LoggedInPanel = () => {
 
   return (
     <article className={moleculesStyles.userInfoContainer}>
-      <p>
-        Välkommen,
-        <span style={{ fontStyle: "italic", marginLeft: "3px" }}>
-          {user?.displayName}
-        </span>
-      </p>
+      <p>Välkommen, {user?.displayName}</p>
+      <button
+        onClick={() => console.log("admin panel")}
+        className={styles.logoutBtn}
+      >
+        <GearIcon />
+      </button>
       <button onClick={logout} className={styles.logoutBtn}>
         <ExitIcon />
       </button>
