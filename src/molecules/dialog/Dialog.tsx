@@ -1,7 +1,6 @@
 import * as RadixDialog from "@radix-ui/react-dialog";
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import { useAuth } from "../context/AuthContext";
-import styles from "./molecules.module.css";
+import DialogContent from "./DialogContent";
 
 interface DialogProps {
   children: ReactNode;
@@ -10,20 +9,14 @@ interface DialogProps {
 }
 
 const Dialog = ({ children, open, onOpenChange }: DialogProps) => {
-  const { isLoggedIn } = useAuth();
   return (
     <RadixDialog.Root open={open} onOpenChange={onOpenChange}>
-      {!isLoggedIn && (
-        <RadixDialog.Trigger asChild>
-          <button>Logga in</button>
-        </RadixDialog.Trigger>
-      )}
-      <RadixDialog.Portal>
-        <RadixDialog.Overlay className={styles.dialogOverlay} />
-        {children}
-      </RadixDialog.Portal>
+      {children}
     </RadixDialog.Root>
   );
 };
+
+Dialog.Trigger = RadixDialog.Trigger;
+Dialog.Content = DialogContent;
 
 export default Dialog;
