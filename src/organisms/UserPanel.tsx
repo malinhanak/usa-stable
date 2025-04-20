@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { useAuth } from "../context/AuthContext";
-import styles from "./organisms.module.css";
-import moleculesStyles from "../molecules/molecules.module.css";
-import { EnterIcon, ExitIcon } from "@radix-ui/react-icons";
-import Dialog from "../molecules/dialog/Dialog";
+
 import * as RadixDialog from "@radix-ui/react-dialog";
-import formStyles from "../atoms/form/form.module.css";
+import { EnterIcon, ExitIcon } from "@radix-ui/react-icons";
+
+import formStyles from "src/atoms/form/form.module.css";
+import { useAuth } from "src/context/AuthContext";
+import Dialog from "src/molecules/dialog/Dialog";
+import moleculesStyles from "src/molecules/molecules.module.css";
+import styles from "src/organisms/organisms.module.css";
 
 const UserPanel = () => {
   const { isLoggedIn, logout, login, user } = useAuth();

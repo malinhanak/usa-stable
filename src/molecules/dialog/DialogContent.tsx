@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
+
 import * as RadixDialog from "@radix-ui/react-dialog";
-import styles from "./dialog.module.css";
-import clsx from "clsx";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import clsx from "clsx";
+
+import styles from "./dialog.module.css";
 
 interface DialogContentProps {
   children: ReactNode;
