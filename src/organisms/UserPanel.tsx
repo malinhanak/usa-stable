@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import styles from "./organisms.module.css";
 import moleculesStyles from "../molecules/molecules.module.css";
-import { Cross2Icon, ExitIcon } from "@radix-ui/react-icons";
-import Dialog from "../molecules/Dialog";
+import { EnterIcon, ExitIcon } from "@radix-ui/react-icons";
+import Dialog from "../molecules/dialog/Dialog";
 import * as RadixDialog from "@radix-ui/react-dialog";
+import formStyles from "../atoms/form/form.module.css";
 
 const UserPanel = () => {
   const { isLoggedIn, logout, login, user } = useAuth();
@@ -40,44 +41,36 @@ const UserPanel = () => {
       )}
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <RadixDialog.Content className={moleculesStyles.dialogContent}>
-          <RadixDialog.Title className={moleculesStyles.dialogTitle}>
-            Logga in
-          </RadixDialog.Title>
-          <RadixDialog.Description
-            className={moleculesStyles.dialogDescription}
-          >
-            Logga in
-          </RadixDialog.Description>
-          <form onSubmit={handleLoginSubmit}>
-            <input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-            />
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Password"
-            />
+        <>
+          {!isLoggedIn && (
+            <RadixDialog.Trigger asChild>
+              <button>
+                <EnterIcon />
+              </button>
+            </RadixDialog.Trigger>
+          )}
+          <Dialog.Content title="Logga in" size="small">
+            <form onSubmit={handleLoginSubmit}>
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+                className={formStyles.input}
+              />
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Password"
+                className={formStyles.input}
+              />
 
-            <div
-              style={{
-                display: "flex",
-                marginTop: 25,
-                justifyContent: "flex-end",
-              }}
-            >
-              <button type="submit">Logga in</button>
-            </div>
-          </form>
-          <RadixDialog.Close asChild>
-            <button className={moleculesStyles.iconButton} aria-label="Close">
-              <Cross2Icon />
-            </button>
-          </RadixDialog.Close>
-        </RadixDialog.Content>
+              <button className={styles.loginBtn} type="submit">
+                Logga in
+              </button>
+            </form>
+          </Dialog.Content>
+        </>
       </Dialog>
     </section>
   );
