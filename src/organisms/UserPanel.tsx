@@ -1,79 +1,15 @@
-import { useState } from "react";
-
-import * as RadixDialog from "@radix-ui/react-dialog";
-import { EnterIcon, ExitIcon } from "@radix-ui/react-icons";
-
-import formStyles from "src/atoms/form/form.module.css";
 import { useAuth } from "src/context/AuthContext";
-import Dialog from "src/molecules/dialog/Dialog";
-import moleculesStyles from "src/molecules/molecules.module.css";
+import LoggedInPanel from "src/molecules/LoggedInPanel";
+import LoginDialog from "src/molecules/LoginDialog";
 import styles from "src/organisms/organisms.module.css";
 
 const UserPanel = () => {
-  const { isLoggedIn, logout, login, user } = useAuth();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLoginSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await login(email, password);
-      setIsDialogOpen(false);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      alert(error.message);
-    }
-  };
+  const { isLoggedIn } = useAuth();
 
   return (
     <section className={styles.userPanelContainer}>
-      {isLoggedIn && (
-        <article className={moleculesStyles.userInfoContainer}>
-          <p>
-            Välkommen,
-            <span style={{ fontStyle: "italic", marginLeft: "3px" }}>
-              {user?.displayName}
-            </span>
-          </p>
-          <button onClick={logout} className={styles.logoutBtn}>
-            <ExitIcon />
-          </button>
-        </article>
-      )}
-
-      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <>
-          {!isLoggedIn && (
-            <RadixDialog.Trigger asChild>
-              <button>
-                <EnterIcon />
-              </button>
-            </RadixDialog.Trigger>
-          )}
-          <Dialog.Content title="Logga in" size="small">
-            <form onSubmit={handleLoginSubmit}>
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-                className={formStyles.input}
-              />
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                placeholder="Password"
-                className={formStyles.input}
-              />
-
-              <button className={styles.loginBtn} type="submit">
-                Logga in
-              </button>
-            </form>
-          </Dialog.Content>
-        </>
-      </Dialog>
+      {isLoggedIn && <LoggedInPanel />}
+      <LoginDialog />
     </section>
   );
 };

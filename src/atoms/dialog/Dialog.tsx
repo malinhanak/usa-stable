@@ -2,7 +2,7 @@ import { Dispatch, ReactNode, SetStateAction } from "react";
 
 import * as RadixDialog from "@radix-ui/react-dialog";
 
-import DialogContent from "src/molecules/dialog/DialogContent";
+import DialogContent from "src/atoms/dialog/DialogContent";
 
 interface DialogProps {
   children: ReactNode;
