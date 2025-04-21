@@ -16,11 +16,12 @@ function App() {
   return (
     <>
       <section className="langSelectionContainer">
+        <UserPanel />
         <LanguageSwitcher />
       </section>
 
       <Logo />
-      <UserPanel />
+
       <Navigation />
       <Main>
         <Outlet />
