@@ -1,34 +1,33 @@
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-
+import fiFlag from "src/assets/images/flags/finland_round_icon_64.png";
+import deFlag from "src/assets/images/flags/germany_round_icon_64.png";
+import seFlag from "src/assets/images/flags/sweden_round_icon_64.png";
+import gbFlag from "src/assets/images/flags/united_kingdom_round_icon_64.png";
 import { useLanguage } from "src/context/LanguageContext";
 
 const LANGUAGES = [
-  { code: "sv", label: "Svenska" },
-  { code: "en", label: "English" },
-  { code: "de", label: "Deutsch" },
-  { code: "fi", label: "Suomi" },
+  { code: "sv", label: seFlag },
+  { code: "en", label: gbFlag },
+  { code: "de", label: deFlag },
+  { code: "fi", label: fiFlag },
 ];
 
 export const LanguageSwitcher = () => {
   const { lang, setLang } = useLanguage();
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger className="px-2 py-1 border rounded">
-        {LANGUAGES.find((l) => l.code === lang)?.label}
-      </DropdownMenu.Trigger>
-
-      <DropdownMenu.Content className="bg-white shadow p-2 rounded">
-        {LANGUAGES.map((l) => (
-          <DropdownMenu.Item
-            key={l.code}
-            onSelect={() => setLang(l.code)}
-            className={`cursor-pointer px-2 py-1 rounded ${lang === l.code ? "bg-gray-200" : ""}`}
-          >
-            {l.label}
-          </DropdownMenu.Item>
-        ))}
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+    <div className="flex gap-2 items-center">
+      {LANGUAGES.map((l) => (
+        <button
+          key={l.code}
+          onClick={() => setLang(l.code)}
+          className={`text-2xl transition hover:scale-110 ${
+            lang === l.code ? "opacity-100" : "opacity-50"
+          }`}
+          aria-label={`Switch to ${l.code}`}
+        >
+          <img src={l.label} alt={l.code} width="24px" />
+        </button>
+      ))}
+    </div>
   );
 };

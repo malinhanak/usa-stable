@@ -4,3 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+
+.langSelectionContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}

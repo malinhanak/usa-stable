@@ -5,15 +5,20 @@ import "@fontsource/poppins/700.css";
 import "@fontsource/poppins/900.css";
 import { Outlet } from "react-router";
 
-import "./App.css";
-import Logo from "./atoms/Logo";
-import Main from "./atoms/Main";
-import Navigation from "./organisms/Navigation";
-import UserPanel from "./organisms/UserPanel";
+import "src/App.css";
+import { LanguageSwitcher } from "src/atoms/LanguageSwitcher";
+import Logo from "src/atoms/Logo";
+import Main from "src/atoms/Main";
+import Navigation from "src/organisms/Navigation";
+import UserPanel from "src/organisms/UserPanel";
 
 function App() {
   return (
     <>
+      <section className="langSelectionContainer">
+        <LanguageSwitcher />
+      </section>
+
       <Logo />
       <UserPanel />
       <Navigation />

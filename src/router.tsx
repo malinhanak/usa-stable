@@ -1,17 +1,20 @@
 import { createBrowserRouter } from "react-router";
 
-import App from "./App";
-import { AuthProvider } from "./context/AuthContext";
-import About from "./pages/About";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import App from "src/App";
+import { AuthProvider } from "src/context/AuthContext";
+import { LanguageProvider } from "src/context/LanguageContext";
+import About from "src/pages/About";
+import Home from "src/pages/Home";
+import NotFound from "src/pages/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <AuthProvider>
-        <App />
+        <LanguageProvider>
+          <App />
+        </LanguageProvider>
       </AuthProvider>
     ),
     children: [
